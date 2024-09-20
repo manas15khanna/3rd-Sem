@@ -1,0 +1,61 @@
+1. Perform installation of Python IDE and configure it 
+2. Start using python interpreter and use it as a calculator 
+3. Write programs in python to demonstrate the following:
+  a. input()
+  b. print()
+  c. 'sep' attribute 
+  d. 'end' attribute
+4. Write a program in python to calculate compound interest when principal, rate and number of periods are given.
+5. Write a program in python to demonstrate the working of the following:
+  a. id()
+  b. type()
+6. Write a program to enter length and breadth and calculate area of rectangle
+7. Write a program to enter radius of circle and calculate area of circle
+8. Write a program to get user input with a message
+9. Write a program to get integer input in Python
+10. Write a program to get multiple integer input in Python 
+11. Write a program to enter Name, marks of 5 subject and calculate total & percentage of student
+12. Write a program to enter distance in feet and convert it into inches
+13. Write a program to enter value of temperature in Fahrenheit and convert it into Celsius.
+14. Write a program to enter radius and height of cylinder and calculate volume of cylinder
+15. Write a program to read name, address, email and phone number of a person through keyboard and print the details.
+16. Write a Python program to demonstrate various base conversion functions.
+17. Write a Python program to demonstrate various type conversion functions
+18. Demonstrate the following Operators in Python with suitable examples.  
+  i) Arithmetic Operators 
+  ii) Relational Operators 
+  iii) Assignment Operator 
+  iv) Logical Operators 
+  v) Bit wise Operators 
+  vi) Ternary Operator 
+  vii) Membership Operators 
+  viii) Identity Operators Also show the Operators Precedence.
+19. Demonstrate the following Conditional statements in Python with suitable examples.
+  i) if statement 
+  ii) if else statement 
+  iii) if – elif – else statement.
+20. Write a program to enter 2 numbers and find the larger of the two 
+21. Write a program to enter 3 numbers and find the largest 
+22. Write a program to check if a person is eligible for voting or not
+23. Write a program to check if an age is teenager or not 
+24. Write a program to enter monthly sale of Salesman and give him commission i.e. if the monthly sale is more than 500000 then commission will be 10% of monthly sale otherwise 5%
+25. Write a program to input any year and check it is Leap Year or Not
+26. Write a program to Input any number and print Absolute value of that number
+WAP to input any number and check it is positive or negative number.
+27. WAP to sort three numbers.
+28. Input temperature of water and print its physical state.
+29. Input 3 side of triangle and print the type of triangle Equilateral, Scalene, Isosceles
+30. Program to calculate and print roots of a quadratic equation: ax2+bx+c=0 (a!=0)
+31. WAP to enter marks of 5 subject and calculate total, percentage and also division.
+  Percentage  Division 
+  >=60        First 
+  >=45        Second
+  >=33        Third
+32. WAP to input day number and print corresponding day name for e.g if input is 1 output should be SUNDAY and so on.
+WAP to enter Bill amount and ask the user the payment mode and give the discount based on payment mode. Also display net payable amount
+  Mode              Discount
+  Credit Card       10% discount 
+  Debit Card        5% discount
+  Net Banking       2% discount
+  otherwise         0 discount
+33. WAP to check entered year is leap year or not
