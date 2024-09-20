@@ -3,7 +3,7 @@
 using namespace std;
 int main()
 {
-  int arr1[100], size, sum=0, i;
+  int arr1[100], size, sum=0;
   cout << "Enter array size:" <<endl;
   cin >> size;
   cout << "Enter The elements of array:" << endl;
