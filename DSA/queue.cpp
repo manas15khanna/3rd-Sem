@@ -7,14 +7,14 @@ void insert()
  if (rear == MAX - 1) {
         cout << "Queue Overflow" << endl;
     } else {
-        if (front == -1) {
-            front = 0;
-        }
-        cout << "Enter the value of the new item: ";
-        cin >> ele;
-        rear = rear + 1;
-        queue_arr[rear] = ele;
-    } 
+      if (front == -1) {
+          front = 0;
+      }
+      cout << "Enter the value of the new item: ";
+      cin >> ele;
+      rear = rear + 1;
+      queue_arr[rear] = ele;
+  } 
 }
 void del()
 {
@@ -41,21 +41,21 @@ void show()
 }
 int main()
 {
-  int c;
-  while(1){
-  cout<<"Enter your choice\n1. Enquque\n2. Dequeue\n3. Display\n4. Exit"<<endl;
-  cin>>c;
-  switch (c) {
-    case 1:
-      insert();
-      break;
-    case 2:
-      del();
-      break;
-    case 3:
-      show();
-      break;
-    case 4:
-      exit(1);}
-  }
+int c;
+while(1){
+cout<<"Enter your choice\n1. Enquque\n2. Dequeue\n3. Display\n4. Exit"<<endl;
+cin>>c;
+switch (c) {
+  case 1:
+    insert();
+    break;
+  case 2:
+    del();
+    break;
+  case 3:
+    show();
+    break;
+  case 4:
+    exit(1);}
+}
 }
