@@ -1,101 +1,190 @@
-#include <iostream>
-using namespace std; 
-struct node 
-{
-  int info;
-  struct node *next;
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+
+struct Node {
+    int info;
+    Node* next;
 };
-struct node *head=NULL;
-int main()
-{
-  int data,c;
-  struct node *ptr;
-  while(1)
-  {
-    cout<< "Enter your choices:\n1. Beginning\n2. At the End\n3. At a given location\n4. Exit" <<endl; 
-    cin>>c;
-    switch (c) 
-    {
-      case 1:
-        {
-          ptr=(struct node *)malloc(sizeof(struct node *));
-          if(ptr==NULL)
-            cout <<"Overflow"<<endl;
-          if(head==NULL)
-          {
-            cout<<"Enter the value\n";
-            cin>>data;
-            ptr->info=data;
-            ptr->next=NULL;
-            head=ptr;
-          }
-          else 
-          {
-            cout<<"Enter the value\n";
-            cin>>data;
-            ptr->info=data;
-            ptr->next=head;
-            head=ptr; 
-          }
+
+Node* head = NULL;
+
+void insertAtBeginning() {
+    Node* ptr = new Node;
+    if (ptr == NULL) {
+        cout << "Overflow" << endl;
+        return;
+    }
+    int data;
+    cout << "Enter the value: ";
+    cin >> data;
+    ptr->info = data;
+    ptr->next = head;
+    head = ptr;
+}
+
+void insertAtEnd() {
+    Node* newNode = new Node;
+    if (newNode == NULL) {
+        cout << "Overflow" << endl;
+        return;
+    }
+    int data;
+    cout << "Enter the value: ";
+    cin >> data;
+    newNode->info = data;
+    newNode->next = NULL;
+    if (head == NULL) {
+        head = newNode;
+    } else {
+        Node* ptr = head;
+        while (ptr->next != NULL)
+            ptr = ptr->next;
+        ptr->next = newNode;
+    }
+}
+
+void insertAtLocation() {
+    int loc, data, count = 0;
+    cout << "Enter the location: ";
+    cin >> loc;
+    Node* ptr = head;
+    while (ptr != NULL) {
+        ptr = ptr->next;
+        count++;
+    }
+    if (loc <= count) {
+        Node* newNode = new Node;
+        if (newNode == NULL) {
+            cout << "Overflow" << endl;
+            return;
         }
-      break;
-      case 2: 
-        {
-          struct node *ptr, *new_node;
-          new_node=(struct node *)malloc(sizeof(struct node));
-          if(new_node==NULL)
-            cout<<"Overflow"<<endl;
-          cout<<"Enter the Value:"<<endl;
-          cin>>data;
-          new_node->info=data;
-          new_node->next=NULL;
-          ptr=head;
-          while(ptr->next!=NULL)
-            ptr=ptr->next;
-          ptr->next=new_node;
+        cout << "Enter the value: ";
+        cin >> data;
+        newNode->info = data;
+        Node* temp = head;
+        ptr = head;
+        for (int i = 0; i < loc; i++)
+            ptr = ptr->next;
+        for (int i = 0; i < loc - 1; i++)
+            temp = temp->next;
+        temp->next = newNode;
+        newNode->next = ptr;
+    } else {
+        cout << "Invalid location" << endl;
+    }
+}
+
+void display() {
+    cout << "The linked list is: H";
+    Node* ptr = head;
+    while (ptr != NULL) {
+        cout << "-->" << ptr->info;
+        ptr = ptr->next;
+    }
+    cout << "-->NULL" << endl;
+}
+
+void search() {
+    int item, loc = 0;
+    cout << "Enter the item to find its location: ";
+    cin >> item;
+    Node* ptr = head;
+    while (ptr != NULL) {
+        if (item == ptr->info) {
+            cout << "Item found at location = " << loc << endl;
+            return;
         }
-      break;
-      case 3:
-      {
-          int loc, i, count=0;
-          struct node *new_node, *temp, *ptr;
-          new_node=(struct node *)malloc(sizeof(struct node *));
-          if(new_node==NULL)
-            cout<<"Overflow"<<endl;
-          if(head==NULL)
-          {
-            cout<<"List is empty"<<endl; 
-            break;
-          }
-          ptr=head;
-          cout<<"Enter the Location:"<<endl;
-          cin>>loc;
-          while(ptr!=NULL)
-          {
-            ptr=ptr->next;
-            count++;
-          }
-          if(loc<=count)
-          {
-            cout<<"Enter the Value"<<endl;
-            cin>>data;
-            new_node->info=data;
-            temp=head;
-            ptr=head;
-            for(i=0;i<loc;i++)
-              ptr=ptr->next;
-            for(i=0;i<loc;i++)
-              temp=temp->next;
-            temp->next=new_node;
-            new_node->next=ptr;
-          }
-          else 
-          {
-            
-          }
+        ptr = ptr->next;
+        loc++;
+    }
+    cout << "Item not found" << endl;
+}
+
+void deleteAtBeginning() {
+    if (head == NULL) {
+        cout << "Linked list is empty" << endl;
+    } else if (head->next == NULL) {
+        delete head;
+        head = NULL;
+        cout << "Only node of the list deleted" << endl;
+    } else {
+        Node* ptr = head;
+        head = head->next;
+        delete ptr;
+        cout << "Node deleted" << endl;
+    }
+}
+
+void deleteAtEnd() {
+    if (head == NULL) {
+        cout << "Linked list is empty" << endl;
+    } else if (head->next == NULL) {
+        delete head;
+        head = NULL;
+        cout << "Only node of the list deleted" << endl;
+    } else {
+        Node* ptr = head;
+        Node* ptrPrev = NULL;
+        while (ptr->next != NULL) {
+            ptrPrev = ptr;
+            ptr = ptr->next;
+        }
+        ptrPrev->next = NULL;
+        delete ptr;
+        cout << "Deleted Node" << endl;
+    }
+}
+
+void deleteAtLocation() {
+    int loc, count = 0;
+    cout << "Enter the location: ";
+    cin >> loc;
+    Node* ptr = head;
+    while (ptr != NULL) {
+        ptr = ptr->next;
+        count++;
+    }
+    if (loc == count) {
+        deleteAtEnd();
+    } else if (loc < count) {
+        Node* ptrPrev = NULL;
+        ptr = head;
+        for (int i = 0; i < loc; i++) {
+            ptrPrev = ptr;
+            ptr = ptr->next;
+        }
+        Node* temp = head;
+        for (int i = 0; i < loc - 2; i++)
+            temp = temp->next;
+        temp->next = ptr;
+        delete ptrPrev;
+        cout << "Deleted Node" << endl;
+    } else {
+        cout << "Invalid location" << endl;
+    }
+}
+
+int main() {
+    int choice;
+    while (1) {
+        cout << "\nEnter your choice:\n";
+        cout << "1. Insert at Beginning\n2. Insert at End\n3. Insert at a Given Location\n4. Display\n5. Search\n6. Delete at Beginning\n7. Delete at End\n8. Delete at Location\n9. Exit\n";
+        cin >> choice;
+
+        switch (choice) {
+            case 1: insertAtBeginning(); break;
+            case 2: insertAtEnd(); break;
+            case 3: insertAtLocation(); break;
+            case 4: display(); break;
+            case 5: search(); break;
+            case 6: deleteAtBeginning(); break;
+            case 7: deleteAtEnd(); break;
+            case 8: deleteAtLocation(); break;
+            case 9: exit(0); break;
+            default: cout << "Invalid choice!" << endl;
         }
     }
-    if(c==4)
-      exit(1);
-  }
+    return 0;
 }
+
