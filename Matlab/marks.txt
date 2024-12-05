@@ -1,0 +1,8 @@
+Enter the marks (0-100): 95
+The grade of 95 marks is A+
+
+Enter the marks (0-100): 33
+The grade of 33 marks is F
+
+Enter the marks (0-100): 85
+The grade of 85 marks is A

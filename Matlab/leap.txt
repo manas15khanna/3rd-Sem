@@ -1,0 +1,5 @@
+Enter a year: 2000
+Leap Year
+
+Enter a year: 1995
+Not a Leap Year
